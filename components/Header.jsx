@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import Image from "next/image";
@@ -21,9 +21,11 @@ const Header = async ({ isAdminPage = false }) => {
             height={60}
             className="h-12 w-auto object-contain"
           />
-          {isAdminPage && (
-            <span className="text-xs font-extralight">admin</span>
-          )}
+          {/* {isAdminPage && (
+            <span className="text-xs font-extralight">
+              {user?.name ?? "Admin"}{" "}
+            </span>
+          )} */}
         </Link>
         <div className="flex items-center space-x-4">
           {isAdminPage ? (
@@ -78,4 +80,4 @@ const Header = async ({ isAdminPage = false }) => {
   );
 };
 
-export default Header;
+export default memo(Header);
